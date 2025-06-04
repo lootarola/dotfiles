@@ -1,0 +1,13 @@
+theme = tokyonight
+mouse-hide-while-typing = true
+keybind = cmd+n=unbind
+font-family = "Departure Mono"
+font-variation-bold = wght=800
+window-colorspace = display-p3
+font-thicken = true
+background-opacity = 0.95
+background-blur-radius = 20
+macos-option-as-alt = true
+bold-is-bright = true
+macos-non-native-fullscreen = false
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
