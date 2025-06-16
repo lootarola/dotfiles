@@ -33,7 +33,12 @@ function M.setup()
   vim.keymap.set('n', '<leader>ts', '<cmd>SwaggerPreviewToggle<CR>', { desc = '[T]oggle [S]wagger' })
 
   -- Oil
-  vim.keymap.set('n', '<leader>o', '<cmd>Oil<CR>', { desc = '[O]il' })
+  vim.keymap.set('n', '<leader>to', '<cmd>Oil<CR>', { desc = '[T]oggle [O]il' })
+
+  -- Octo
+  vim.keymap.set('n', '<leader>oa', '<cmd>Octo<CR>', { desc = '[O]cto [A]ctions' })
+  vim.keymap.set('n', '<leader>op', '<cmd>Octo pr list<CR>', { desc = '[O]cto [P]ull Requests' })
+  vim.keymap.set('n', '<leader>oi', '<cmd>Octo issue list<CR>', { desc = '[O]cto [I]ssues' })
 end
 
 return M
