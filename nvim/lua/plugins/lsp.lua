@@ -2,7 +2,7 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-      { 'williamboman/mason.nvim', config = true }, 
+      { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
       { 'j-hui/fidget.nvim', opts = {} },
@@ -60,6 +60,7 @@ return {
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
       local servers = {
+        harper_ls = {},
         gopls = {},
         pyright = {},
         rust_analyzer = {},
@@ -76,13 +77,13 @@ return {
         },
       }
       require('mason').setup()
-      
+
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua',
         'markdownlint',
       })
-      
+
       require('mason-lspconfig').setup {
         ensure_installed = vim.tbl_keys(servers),
         handlers = {
@@ -93,7 +94,7 @@ return {
           end,
         },
       }
-      
+
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
     end,
   },
@@ -143,4 +144,4 @@ return {
       })
     end,
   },
-} 
+}
