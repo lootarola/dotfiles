@@ -12,19 +12,13 @@ function M.setup()
   vim.keymap.set('n', '<leader>ge', '<cmd>GoIfErr<CR>', { desc = '[G]o [E]rror Handling' })
 
   -- Commits
-  vim.keymap.set('n', '<leader>mc', function()
+  vim.keymap.set('n', '<leader>cc', function()
     require('telescope').extensions.conventional_commits.conventional_commits()
   end, { desc = '[C]onventionalCommit' })
 
-  vim.keymap.set('n', '<leader>mm', function()
+  vim.keymap.set('n', '<leader>cm', function()
     require('telescope').extensions.gitmoji.gitmoji()
   end, { desc = 'Git[M]oji' })
-
-  -- Code Companion
-  vim.keymap.set('n', '<leader>cc', '<cmd>CodeCompanionChat Toggle<CR>', { desc = '[C]odeCompanion [C]hat' })
-  vim.keymap.set({ 'n', 'v' }, '<leader>ci', '<cmd>CodeCompanion<CR>', { desc = '[C]odeCompanion [I]nline' })
-  vim.keymap.set({ 'n', 'v' }, '<leader>ca', '<cmd>CodeCompanionActions<CR>', { desc = '[C]odeCompanion [A]ctions' })
-  vim.keymap.set('v', '<leader>cc', '<cmd>CodeCompanionChat Add<CR>', { desc = '[C]odeCompanion [C]opy' })
 
   -- Terminal
   vim.keymap.set('n', '<leader>tt', '<cmd>ToggleTerm<CR>', { desc = '[T]oggle [T]erminal' })
@@ -39,6 +33,17 @@ function M.setup()
   vim.keymap.set('n', '<leader>oa', '<cmd>Octo<CR>', { desc = '[O]cto [A]ctions' })
   vim.keymap.set('n', '<leader>op', '<cmd>Octo pr list<CR>', { desc = '[O]cto [P]ull Requests' })
   vim.keymap.set('n', '<leader>oi', '<cmd>Octo issue list<CR>', { desc = '[O]cto [I]ssues' })
+
+  -- v0.12 LSP Inline Completion
+  -- vim.keymap.set('i', '<C-CR>', function()
+  --  if not vim.lsp.inline_completion.get() then
+  --    return '<C-CR>'
+  --  end
+  --  end, {
+  --  expr = true,
+  --  replace_keycodes = true,
+  --  desc = 'Get the current inline completion',
+  --  })
 end
 
 return M
