@@ -3,31 +3,8 @@ local M = {}
 
 function M.setup()
   -- Go
-  vim.keymap.set('n', '<leader>gt', '<cmd>GoTestFunc<CR>', { desc = '[G]o [T]est Function' })
-  vim.keymap.set('n', '<leader>gc', '<cmd>GoCoverage<CR>', { desc = '[G]o [C]overage' })
-  vim.keymap.set('n', '<leader>ga', '<cmd>GoAddTags<CR>', { desc = '[G]o [A]dd Tags' })
-  vim.keymap.set('n', '<leader>gr', '<cmd>GoRemoveTags<CR>', { desc = '[G]o [R]emove Tags' })
-  vim.keymap.set('n', '<leader>gs', '<cmd>GoFillStruct<CR>', { desc = '[G]o Fill [S]truct' })
-  vim.keymap.set('n', '<leader>gi', '<cmd>GoImpl<CR>', { desc = '[G]o [I]mplement Interface' })
-  vim.keymap.set('n', '<leader>ge', '<cmd>GoIfErr<CR>', { desc = '[G]o [E]rror Handling' })
-
-  -- Commits
-  vim.keymap.set('n', '<leader>cc', function()
-    require('telescope').extensions.conventional_commits.conventional_commits()
-  end, { desc = '[C]onventionalCommit' })
-
-  vim.keymap.set('n', '<leader>cm', function()
-    require('telescope').extensions.gitmoji.gitmoji()
-  end, { desc = 'Git[M]oji' })
-
-  -- Terminal
-  vim.keymap.set('n', '<leader>tt', '<cmd>ToggleTerm<CR>', { desc = '[T]oggle [T]erminal' })
-
-  -- Swagger
-  vim.keymap.set('n', '<leader>ts', '<cmd>SwaggerPreviewToggle<CR>', { desc = '[T]oggle [S]wagger' })
-
-  -- Oil
-  vim.keymap.set('n', '<leader>to', '<cmd>Oil<CR>', { desc = '[T]oggle [O]il' })
+  vim.keymap.set('n', '<leader>tg', '<cmd>GoTestFunc<CR>', { desc = '[T]est [G]o Func' })
+  vim.keymap.set('n', '<leader>tcg', '<cmd>GoCoverage<CR>', { desc = '[T]est [C]overage [G]o' })
 
   -- Octo
   vim.keymap.set('n', '<leader>oa', '<cmd>Octo<CR>', { desc = '[O]cto [A]ctions' })
