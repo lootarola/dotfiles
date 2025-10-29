@@ -12,6 +12,7 @@ return {
       default_delete_branch = true,
       ssh_aliases = { ['github.com-work'] = 'github.com' }, -- Remember to add work alias for github
       picker = 'telescope',
+      use_local_fs = true,
     }
   end,
 }
