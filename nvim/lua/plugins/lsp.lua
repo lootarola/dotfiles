@@ -67,6 +67,7 @@ return {
         rust_analyzer = {},
         docker_compose_language_service = {},
         dockerls = {},
+        jsonls = {},
         lua_ls = {
           settings = {
             Lua = {
@@ -83,6 +84,7 @@ return {
       vim.list_extend(ensure_installed, {
         'stylua',
         'markdownlint',
+        'prettier',
       })
 
       require('mason-lspconfig').setup {
@@ -124,6 +126,7 @@ return {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        json = { 'prettier' },
       },
     },
   },
