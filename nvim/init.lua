@@ -22,6 +22,11 @@ vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+-- Unset default autocompletion in nvim
+vim.keymap.set('i', '<C-p>', '<Nop>', { silent = true })
+vim.keymap.set('i', '<C-y>', '<Nop>', { silent = true })
+vim.keymap.set('i', '<C-n>', '<Nop>', { silent = true })
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
