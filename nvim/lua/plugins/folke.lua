@@ -50,7 +50,7 @@ return {
       },
       presets = {
         bottom_search = false,
-        command_palette = false,
+        command_palette = true,
         long_message_to_split = true,
         inc_rename = false,
         lsp_doc_border = false,
@@ -87,11 +87,7 @@ return {
       },
     },
     dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
       'MunifTanjim/nui.nvim',
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
       'rcarriga/nvim-notify',
     },
   },
@@ -103,9 +99,8 @@ return {
       {
         '<tab>',
         function()
-          -- if there is a next edit, jump to it, otherwise apply it if any
           if not require('sidekick').nes_jump_or_apply() then
-            return '<Tab>' -- fallback to normal tab
+            return '<Tab>'
           end
         end,
         expr = true,
@@ -128,21 +123,6 @@ return {
         mode = { 'n', 'v' },
       },
       {
-        '<leader>as',
-        function()
-          require('sidekick.cli').select()
-        end,
-        desc = 'Select CLI',
-      },
-      {
-        '<leader>ac',
-        function()
-          require('sidekick.cli').toggle { name = 'cursor', focus = true }
-        end,
-        desc = 'Sidekick Cursor Toggle',
-        mode = { 'n', 'v' },
-      },
-      {
         '<leader>ap',
         function()
           require('sidekick.cli').select_prompt()
@@ -158,7 +138,7 @@ return {
         desc = 'Detach a CLI Session',
       },
       {
-        '<leader>at',
+        '<leader>as',
         function()
           require('sidekick.cli').send { msg = '{this}' }
         end,
