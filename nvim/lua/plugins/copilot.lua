@@ -5,31 +5,29 @@ return {
   config = function()
     require('copilot').setup {
       panel = {
-        enabled = false,
+        enabled = true,
+        keymap = {
+          open = '<C-.>',
+        },
       },
       suggestion = {
         auto_trigger = true,
-        keymap = {
-          accept = false,
-        },
       },
       filetypes = {
-        markdown = true,
-        yaml = true,
         ['.'] = true,
       },
     }
-    
-    vim.keymap.set('i', '<Right>', function()
-      local copilot_status = require('copilot.suggestion')
-      if copilot_status.is_visible() then
-        copilot_status.accept()
-      else
-        return '<Right>'
-      end
-    end, {
-      expr = true,
-      desc = 'Accept Copilot Suggestion',
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'BlinkCmpMenuOpen',
+      callback = function()
+        vim.b.copilot_suggestion_hidden = true
+      end,
+    })
+    vim.api.nvim_create_autocmd('User', {
+      pattern = 'BlinkCmpMenuClose',
+      callback = function()
+        vim.b.copilot_suggestion_hidden = false
+      end,
     })
   end,
 }
