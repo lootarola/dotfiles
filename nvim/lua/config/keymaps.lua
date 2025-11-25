@@ -3,16 +3,19 @@ local M = {}
 
 function M.setup()
   -- Go
-  vim.keymap.set('n', '<leader>lgt', '<cmd>GoTestFunc<CR>', { desc = '[T]est [G]o Func' })
-  vim.keymap.set('n', '<leader>lgc', '<cmd>GoCoverage<CR>', { desc = '[T]est [C]overage [G]o' })
+  vim.keymap.set('n', '<leader>lgt', '<cmd>GoTestFunc<CR>', { desc = 'Test Func' })
+  vim.keymap.set('n', '<leader>lgc', '<cmd>GoCoverage<CR>', { desc = 'Coverage' })
 
   -- Octo
-  vim.keymap.set('n', '<leader>oa', '<cmd>Octo<CR>', { desc = '[O]cto [A]ctions' })
-  vim.keymap.set('n', '<leader>op', '<cmd>Octo pr list<CR>', { desc = '[O]cto [P]ull Requests' })
-  vim.keymap.set('n', '<leader>oi', '<cmd>Octo issue list<CR>', { desc = '[O]cto [I]ssues' })
+  vim.keymap.set('n', '<leader>oa', '<cmd>Octo<CR>', { desc = 'Actions' })
+  vim.keymap.set('n', '<leader>op', '<cmd>Octo pr list<CR>', { desc = 'Pull Requests' })
+  vim.keymap.set('n', '<leader>oi', '<cmd>Octo issue list<CR>', { desc = 'Issues' })
 
   -- Oil
-  vim.keymap.set('n', '<leader>to', '<cmd>Oil<CR>', { desc = '[O]il' })
+  vim.keymap.set('n', '<leader>to', '<cmd>Oil<CR>', { desc = 'Oil' })
+
+  -- Hardtime
+  vim.keymap.set('n', '<leader>tH', '<cmd>Hardtime toggle<CR>', { desc = 'Hardtime' })
 
   -- v0.12 LSP Inline Completion
   -- vim.keymap.set('i', '<C-CR>', function()

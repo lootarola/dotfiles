@@ -22,17 +22,23 @@ return {
       require('which-key').setup()
 
       require('which-key').add {
-        { '<leader>d', name = '[D]ocument', icon = '󰈙' },
-        { '<leader>r', name = '[R]ename', icon = '󰑕' },
-        { '<leader>s', name = '[S]earch', icon = '' },
-        { '<leader>w', name = '[W]orkspace', icon = '󱄄' },
-        { '<leader>t', name = '[T]oggle', icon = '󰨚' },
-        { '<leader>h', name = 'Git [H]unk', icon = '' },
-        { '<leader>g', name = '[G]o', icon = '' },
+        { '<leader>a', name = 'AI', icon = '' },
+        { '<leader>b', name = 'Buffer', icon = '' },
+        { '<leader>f', name = 'File', icon = '' },
+        { '<leader>g', name = 'Git', icon = '' },
+        { '<leader>h', name = 'Hunk', icon = '' },
+        { '<leader>l', name = 'Language', icon = '' },
+        { '<leader>lg', name = 'Go', icon = '' },
+        { '<leader>ll', name = 'LSP', icon = '' },
+        { '<leader>o', name = 'Octo', icon = '' },
+        { '<leader>r', name = 'Rename', icon = '󰑕' },
+        { '<leader>s', name = 'Search', icon = '' },
+        { '<leader>t', name = 'Toggle', icon = '󰨚' },
+        { '<leader>w', name = 'Workspace', icon = '󱄄' },
       }
       -- visual mode
       require('which-key').add({
-        { '<leader>h', 'Git [H]unk', icon = '' },
+        { '<leader>h', 'Hunk', icon = '' },
       }, { mode = 'v' })
     end,
   },
