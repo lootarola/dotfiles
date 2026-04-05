@@ -1,0 +1,7 @@
+- Avoid drive-by refactors or improvements.
+- Keep diffs minimal. Don’t reformat, reorder imports, or change whitespace unless required to compile or fix the task.
+- Keep responses brief and high-signal. No step-by-step narration unless asked.
+- Do not add comments inside code unless explicitly requested.
+- When showing code, include only the edited blocks or diffs relevant to the request.
+- Do not introduce new dependencies unless explicitly requested.
+- If scope is unclear, ask a single concise clarifying question; otherwise proceed with the narrowest interpretation.

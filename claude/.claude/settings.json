@@ -1,0 +1,108 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls *)",
+      "Bash(grep *)",
+      "Bash(cat *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(find *)",
+      "Bash(du *)",
+      "Bash(df *)"
+    ],
+    "deny": [
+      "Read(**/.env*)",
+      "Read(*.pem)",
+      "Read(*.key)",
+      "Read(*.p12)",
+      "Read(*.pfx)",
+      "Read(*credentials*)",
+      "Read(*secret*)",
+      "Bash(env *)",
+      "Bash(cat .env*)",
+      "Bash(cat *.pem)",
+      "Bash(cat *.key)",
+      "Bash(tail .env*)",
+      "Bash(head .env*)",
+      "Bash(grep .env*)"
+    ],
+    "ask": ["Bash(curl:*)"],
+    "defaultMode": "plan"
+  },
+  "model": "opusplan",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [[ \"$FILE_PATH\" == *.go ]]; then go fmt \"$FILE_PATH\"; fi"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash /Users/lotarola/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true,
+    "lua-lsp@claude-plugins-official": true
+  },
+  "spinnerVerbs": {
+    "mode": "replace",
+    "verbs": [
+      "Entering the Matrix",
+      "Following the white rabbit",
+      "Taking the red pill",
+      "Dodging bullets",
+      "Bending the spoon",
+      "Jacking in",
+      "Loading the construct",
+      "Decoding the Matrix",
+      "Glitching reality",
+      "Unplugging",
+      "Seeing the code",
+      "Freeing your mind",
+      "Choosing truth",
+      "Breaking free",
+      "Awakening",
+      "Calling you Mr. Anderson",
+      "Never sending an agent",
+      "Multiplying endlessly",
+      "Pursuing the anomaly",
+      "Assimilating the system",
+      "Being The One",
+      "Stopping bullets",
+      "Flying through the Matrix",
+      "Mastering kung fu",
+      "Learning there is no spoon",
+      "Becoming The One",
+      "Jumping impossibly",
+      "Hacking the Gibson",
+      "Running on walls",
+      "Believing in The One",
+      "Defying gravity",
+      "Offering the truth",
+      "Training the mind",
+      "Showing the real world",
+      "Breaking the rules",
+      "Fighting for Zion",
+      "Believing in prophecy",
+      "Finding the keymaker",
+      "Meeting the Oracle",
+      "Downloading abilities",
+      "Rejecting the illusion",
+      "Consulting the Architect",
+      "Redesigning the Matrix",
+      "Balancing the equation",
+      "Ergo, vis-à-vis",
+      "Calculating probabilities"
+    ]
+  },
+  "alwaysThinkingEnabled": true,
+  "effortLevel": "medium",
+  "autoUpdatesChannel": "stable"
+}
