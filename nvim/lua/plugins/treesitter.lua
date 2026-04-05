@@ -1,22 +1,42 @@
-return {
-  {
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
-    branch = 'master',
-    opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'json', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
-      auto_install = true,
-      highlight = {
-        enable = true,
-        disable = { 'html' },
-        additional_vim_regex_highlighting = { 'go' },
-      },
-      indent = { enable = true, disable = {} },
-    },
-    config = function(_, opts)
-      require('nvim-treesitter.install').prefer_git = true
-      ---@diagnostic disable-next-line: missing-fields
-      require('nvim-treesitter.configs').setup(opts)
-    end,
-  },
-} 
+vim.g.no_plugin_maps = true
+
+require('nvim-treesitter.install').prefer_git = true
+
+require('nvim-treesitter').install {
+  'bash',
+  'css',
+  'csv',
+  'diff',
+  'dockerfile',
+  'gitignore',
+  'go',
+  'groovy',
+  'html',
+  'javascript',
+  'jsdoc',
+  'json',
+  'lua',
+  'luadoc',
+  'make',
+  'markdown',
+  'markdown_inline',
+  'python',
+  'query',
+  'regex',
+  'rust',
+  'sql',
+  'tsv',
+  'typescript',
+  'vim',
+  'vimdoc',
+  'yaml',
+}
+
+vim.api.nvim_create_autocmd('FileType', {
+  callback = function(ev)
+    if ev.match == 'html' then
+      return
+    end
+    pcall(vim.treesitter.start, ev.buf)
+  end,
+})
