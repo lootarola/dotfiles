@@ -12,3 +12,13 @@ bold-is-bright = true
 macos-non-native-fullscreen = false
 keybind = global:ctrl+grave_accent=toggle_quick_terminal
 window-decoration = none
+keybind = shift+enter=text:\x1b\r
+keybind = ctrl+one=text:\x1b[49;5u
+keybind = ctrl+two=text:\x1b[50;5u
+keybind = ctrl+three=text:\x1b[51;5u
+keybind = ctrl+four=text:\x1b[52;5u
+keybind = ctrl+five=text:\x1b[53;5u
+keybind = ctrl+six=text:\x1b[54;5u
+keybind = ctrl+seven=text:\x1b[55;5u
+keybind = ctrl+eight=text:\x1b[56;5u
+keybind = ctrl+nine=text:\x1b[57;5u
