@@ -14,7 +14,6 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-
 # Plugins
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light-mode for \
@@ -52,3 +51,35 @@ alias lt='ll --tree'
 alias lta='lt -a'
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+
+# zmx
+if [[ -n $ZMX_SESSION ]]; then
+  export PS1="%F{cyan}$ZMX_SESSION%f ${PS1}"
+fi
+
+_zmx_switch_by_index() {
+  local idx=$1
+  local session
+  session=$(zmx l --short 2>/dev/null | awk -F'[\t=]' -v n="$idx" 'NR==n{print $2}')
+  if [[ -n "$session" ]]; then
+    BUFFER="zmx a $session"
+    zle accept-line
+  fi
+}
+
+for i in {1..9}; do
+  eval "zmx-switch-$i() { _zmx_switch_by_index $i; }"
+  zle -N "zmx-switch-$i"
+  bindkey "\e[$((48+i));5u" "zmx-switch-$i"
+done
+
+zmx-list() { BUFFER="zmx l"; zle accept-line; }
+zle -N zmx-list
+bindkey "\e[48;5u" zmx-list
+
+# Kitty keyboard protocol reset
+autoload -Uz add-zsh-hook
+_reset_kitty_keyboard_protocol() {
+  printf '\e[<u'
+}
+add-zsh-hook precmd _reset_kitty_keyboard_protocol
