@@ -104,5 +104,6 @@
   },
   "alwaysThinkingEnabled": true,
   "effortLevel": "medium",
-  "autoUpdatesChannel": "stable"
+  "autoUpdatesChannel": "stable",
+  "skipAutoPermissionPrompt": true
 }
