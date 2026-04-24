@@ -7,6 +7,9 @@ PACKAGES  := aerospace claude ghostty nvim zsh
 BREW_TAPS := neurosnap/tap
 BREW_DEPS := stow zmx
 
+BREW_DEPS_nvim := tree-sitter-cli
+BREW_DEPS_zsh  := eza
+
 TARGETS_aerospace := $(HOME)/.config/aerospace/aerospace.toml
 TARGETS_claude    := $(HOME)/.claude/CLAUDE.md \
 		     $(HOME)/.claude/settings.json \
@@ -16,9 +19,7 @@ TARGETS_ghostty   := $(HOME)/.config/ghostty
 TARGETS_nvim      := $(HOME)/.config/nvim
 TARGETS_zsh       := $(HOME)/.zshrc
 
-.PHONY: install uninstall install-deps check-brew \
-	$(addprefix install-,$(PACKAGES)) \
-	$(addprefix uninstall-,$(PACKAGES))
+.PHONY: install uninstall install-deps check-brew
 
 define confirm
 @printf "$(1) [y/N] "; \
@@ -35,8 +36,16 @@ uninstall:
 	$(call confirm,This will remove all package symlinks.)
 	$(STOW) -D $(PACKAGES)
 
-install-%: install-deps
+install-%: check-brew
 	$(call confirm,This will override existing configuration for $(patsubst install-%,%,$@).)
+	@for dep in $(BREW_DEPS) $(BREW_DEPS_$(patsubst install-%,%,$@)); do \
+		if ! brew list --formula $$dep &>/dev/null; then \
+			echo "Installing $$dep..."; \
+			brew install $$dep; \
+		else \
+			echo "$$dep already installed."; \
+		fi; \
+	done
 	rm -rf $(TARGETS_$(patsubst install-%,%,$@))
 	$(STOW) --restow $(patsubst install-%,%,$@)
 
@@ -48,7 +57,7 @@ install-deps: check-brew
 	@for tap in $(BREW_TAPS); do \
 		brew tap $$tap 2>/dev/null; \
 	done
-	@for dep in $(BREW_DEPS); do \
+	@for dep in $(BREW_DEPS) $(foreach pkg,$(PACKAGES),$(BREW_DEPS_$(pkg))); do \
 		if ! brew list --formula $$dep &>/dev/null; then \
 			echo "Installing $$dep..."; \
 			brew install $$dep; \
