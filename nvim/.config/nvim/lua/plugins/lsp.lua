@@ -46,7 +46,6 @@ local servers = {
   gopls = {},
   html = {},
   marksman = {},
-  groovyls = {},
   pyright = {},
   rust_analyzer = {},
   sqls = {},
