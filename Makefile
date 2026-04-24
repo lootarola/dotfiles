@@ -38,6 +38,9 @@ uninstall:
 
 install-%: check-brew
 	$(call confirm,This will override existing configuration for $(patsubst install-%,%,$@).)
+	@for tap in $(BREW_TAPS); do \
+		brew tap $$tap 2>/dev/null; \
+	done
 	@for dep in $(BREW_DEPS) $(BREW_DEPS_$(patsubst install-%,%,$@)); do \
 		if ! brew list --formula $$dep &>/dev/null; then \
 			echo "Installing $$dep..."; \
