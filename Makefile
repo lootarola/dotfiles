@@ -7,7 +7,7 @@ PACKAGES  := aerospace claude ghostty nvim zsh
 BREW_TAPS := neurosnap/tap
 BREW_DEPS := stow zmx
 
-BREW_DEPS_nvim := tree-sitter-cli
+BREW_DEPS_nvim := tree-sitter-cli ripgrep
 BREW_DEPS_zsh  := eza
 
 TARGETS_aerospace := $(HOME)/.config/aerospace/aerospace.toml
