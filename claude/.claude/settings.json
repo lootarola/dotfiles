@@ -45,11 +45,12 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "bash /Users/lotarola/.claude/statusline-command.sh"
+    "command": "bash $HOME/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
-    "lua-lsp@claude-plugins-official": true
+    "lua-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true
   },
   "spinnerVerbs": {
     "mode": "replace",
@@ -105,5 +106,6 @@
   "alwaysThinkingEnabled": true,
   "effortLevel": "medium",
   "autoUpdatesChannel": "stable",
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "theme": "dark-ansi"
 }
