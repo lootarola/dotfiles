@@ -1,7 +1,7 @@
 ---@type snacks.Config
 require('snacks').setup {
   image = { enabled = false },
-  bigfile = { enabled = true },
+  bigfile = { enabled = true, line_length = 100000 },
   dashboard = { enabled = true },
   indent = { enabled = true },
   input = { enabled = true },
