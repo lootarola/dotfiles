@@ -12,6 +12,7 @@ bold-is-bright = true
 macos-non-native-fullscreen = false
 keybind = global:ctrl+grave_accent=toggle_quick_terminal
 window-decoration = none
+custom-shader = shaders/kitty.glsl
 keybind = shift+enter=text:\x1b\r
 keybind = ctrl+one=text:\x1b[49;5u
 keybind = ctrl+two=text:\x1b[50;5u
