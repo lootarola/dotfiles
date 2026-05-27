@@ -72,6 +72,7 @@ vim.list_extend(ensure_installed, {
   'stylua',
   'markdownlint',
   'prettier',
+  'rumdl',
 })
 
 require('mason-lspconfig').setup {
@@ -101,6 +102,7 @@ require('conform').setup {
     lua = { 'stylua' },
     json = { 'prettier' },
     go = { 'gofmt', 'goimports' },
+    markdown = { 'rumdl' },
   },
 }
 vim.keymap.set('n', '<leader>bf', function()
