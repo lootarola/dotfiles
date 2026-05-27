@@ -1,0 +1,24 @@
+nvim/.config/nvim/lua/plugins/snacks.lua
+  s_27c77c5d9c54ce::t_960aa162662ff2 31-35,37-42,45-49,82-83
+  s_27c77c5d9c54ce::t_02238f08b74c81 295-296,302,307-317
+  s_27c77c5d9c54ce::t_8a833feff7ea68 50,55-58,63-66,71-74,79-81
+  s_27c77c5d9c54ce::t_a9c49920e142b7 36,44,52-54,60-62,68-70,76-78
+  s_27c77c5d9c54ce::t_87968a7c2c9dba 298-301,303-306,318-319
+  s_27c77c5d9c54ce::t_ee012c86a7353c 96
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "a32c58b9cf30c11fddaf698223aa3f3e42adb481",
+  "prompts": {},
+  "sessions": {
+    "s_27c77c5d9c54ce": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1d016ddb-e764-473f-878a-229c05c756f8",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "lootarola <lucas.otarola@gmail.com>"
+    }
+  }
+}
