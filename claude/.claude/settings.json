@@ -105,7 +105,7 @@
   },
   "alwaysThinkingEnabled": true,
   "effortLevel": "medium",
-  "autoUpdatesChannel": "stable",
-  "skipAutoPermissionPrompt": true,
-  "theme": "dark-ansi"
+  "autoUpdatesChannel": "latest",
+  "theme": "dark-ansi",
+  "skipAutoPermissionPrompt": true
 }
