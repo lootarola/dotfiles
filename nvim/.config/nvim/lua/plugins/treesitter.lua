@@ -11,6 +11,7 @@ require('nvim-treesitter').install {
   'gitignore',
   'go',
   'html',
+  'hurl',
   'javascript',
   'jsdoc',
   'json',
