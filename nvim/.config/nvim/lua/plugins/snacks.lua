@@ -28,6 +28,59 @@ require('snacks').setup {
     notification = {
       wo = { wrap = true },
     },
+    terminal = {
+      keys = {
+        term_normal = false,
+        ['<esc>'] = {
+          '<esc>',
+          function()
+            vim.cmd 'stopinsert'
+          end,
+          mode = 't',
+          desc = 'Escape to normal mode',
+        },
+        ['<c-/>'] = {
+          '<c-/>',
+          function()
+            Snacks.terminal(nil, { count = os.time() })
+          end,
+          mode = 't',
+          desc = 'New Terminal',
+        },
+        ['<c-h>'] = {
+          '<c-h>',
+          function()
+            vim.cmd 'wincmd h'
+          end,
+          mode = 't',
+          desc = 'Move focus left',
+        },
+        ['<c-j>'] = {
+          '<c-j>',
+          function()
+            vim.cmd 'wincmd j'
+          end,
+          mode = 't',
+          desc = 'Move focus down',
+        },
+        ['<c-k>'] = {
+          '<c-k>',
+          function()
+            vim.cmd 'wincmd k'
+          end,
+          mode = 't',
+          desc = 'Move focus up',
+        },
+        ['<c-l>'] = {
+          '<c-l>',
+          function()
+            vim.cmd 'wincmd l'
+          end,
+          mode = 't',
+          desc = 'Move focus right',
+        },
+      },
+    },
   },
 }
 
@@ -40,6 +93,7 @@ _G.bt = function()
 end
 
 if vim.fn.has 'nvim-0.11' == 1 then
+  ---@diagnostic disable-next-line: duplicate-set-field
   vim._print = function(_, ...)
     dd(...)
   end
@@ -238,12 +292,31 @@ end, { desc = 'Next Reference' })
 vim.keymap.set({ 'n', 't' }, '[[', function()
   Snacks.words.jump(-vim.v.count1)
 end, { desc = 'Prev Reference' })
+local _hidden_terminals = {}
+
 vim.keymap.set('n', '<c-/>', function()
-  Snacks.terminal()
-end, { desc = 'Toggle Terminal' })
-vim.keymap.set('n', '<c-_>', function()
-  Snacks.terminal()
-end, { desc = 'which_key_ignore' })
+  local visible = vim.tbl_filter(function(t)
+    return t:win_valid()
+  end, Snacks.terminal.list())
+  if #visible > 0 then
+    _hidden_terminals = visible
+    for _, t in ipairs(visible) do
+      t:hide()
+    end
+  else
+    local restored = false
+    for _, t in ipairs(_hidden_terminals) do
+      if t:buf_valid() then
+        t:show()
+        restored = true
+      end
+    end
+    _hidden_terminals = {}
+    if not restored then
+      Snacks.terminal()
+    end
+  end
+end, { desc = 'Toggle Terminals' })
 vim.keymap.set('n', '<leader>N', function()
   Snacks.win {
     file = vim.api.nvim_get_runtime_file('doc/news.txt', false)[1],
