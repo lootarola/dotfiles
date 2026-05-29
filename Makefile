@@ -2,10 +2,9 @@ STOW_DIR  := $(CURDIR)
 TARGET    := $(HOME)
 STOW      := stow -v -t $(TARGET) -d $(STOW_DIR)
 
-PACKAGES  := aerospace claude ghostty nvim zsh
+PACKAGES  := aerospace claude ghostty nvim zsh tmux
 
-BREW_TAPS := neurosnap/tap
-BREW_DEPS := stow zmx
+BREW_DEPS := stow tmux
 
 BREW_DEPS_nvim := tree-sitter-cli ripgrep
 BREW_DEPS_zsh  := eza
@@ -17,6 +16,7 @@ TARGETS_claude    := $(HOME)/.claude/CLAUDE.md \
                      $(HOME)/.claude/commands/pr.md
 TARGETS_ghostty   := $(HOME)/.config/ghostty
 TARGETS_nvim      := $(HOME)/.config/nvim
+TARGETS_tmux      := $(HOME)/.config/tmux
 TARGETS_zsh       := $(HOME)/.zshrc
 
 .PHONY: install uninstall install-deps check-brew
@@ -38,9 +38,6 @@ uninstall:
 
 install-%: check-brew
 	$(call confirm,This will override existing configuration for $(patsubst install-%,%,$@).)
-	@for tap in $(BREW_TAPS); do \
-		brew tap $$tap 2>/dev/null; \
-	done
 	@for dep in $(BREW_DEPS) $(BREW_DEPS_$(patsubst install-%,%,$@)); do \
 		if ! brew list --formula $$dep &>/dev/null; then \
 			echo "Installing $$dep..."; \

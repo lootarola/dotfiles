@@ -19,11 +19,16 @@ function M.setup()
   vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
   vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
-  -- Window navigation
-  vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-  vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-  vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-  vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+  -- Window / pane navigation (falls back to tmux at edges)
+  local nav = require('config.nav')
+  vim.keymap.set('n', '<C-h>', function() nav.navigate('h') end, { desc = 'Move focus left' })
+  vim.keymap.set('n', '<C-j>', function() nav.navigate('j') end, { desc = 'Move focus down' })
+  vim.keymap.set('n', '<C-k>', function() nav.navigate('k') end, { desc = 'Move focus up' })
+  vim.keymap.set('n', '<C-l>', function() nav.navigate('l') end, { desc = 'Move focus right' })
+  vim.keymap.set('t', '<C-h>', function() nav.navigate('h') end, { desc = 'Move focus left' })
+  vim.keymap.set('t', '<C-j>', function() nav.navigate('j') end, { desc = 'Move focus down' })
+  vim.keymap.set('t', '<C-k>', function() nav.navigate('k') end, { desc = 'Move focus up' })
+  vim.keymap.set('t', '<C-l>', function() nav.navigate('l') end, { desc = 'Move focus right' })
 
   -- Go
   vim.keymap.set('n', '<leader>lgt', '<cmd>GoTestFunc<CR>', { desc = 'Test Func' })

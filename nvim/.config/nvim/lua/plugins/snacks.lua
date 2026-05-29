@@ -47,38 +47,10 @@ require('snacks').setup {
           mode = 't',
           desc = 'New Terminal',
         },
-        ['<c-h>'] = {
-          '<c-h>',
-          function()
-            vim.cmd 'wincmd h'
-          end,
-          mode = 't',
-          desc = 'Move focus left',
-        },
-        ['<c-j>'] = {
-          '<c-j>',
-          function()
-            vim.cmd 'wincmd j'
-          end,
-          mode = 't',
-          desc = 'Move focus down',
-        },
-        ['<c-k>'] = {
-          '<c-k>',
-          function()
-            vim.cmd 'wincmd k'
-          end,
-          mode = 't',
-          desc = 'Move focus up',
-        },
-        ['<c-l>'] = {
-          '<c-l>',
-          function()
-            vim.cmd 'wincmd l'
-          end,
-          mode = 't',
-          desc = 'Move focus right',
-        },
+        ['<c-h>'] = { '<c-h>', function() require('config.nav').navigate('h') end, mode = 't', desc = 'Move focus left' },
+        ['<c-j>'] = { '<c-j>', function() require('config.nav').navigate('j') end, mode = 't', desc = 'Move focus down' },
+        ['<c-k>'] = { '<c-k>', function() require('config.nav').navigate('k') end, mode = 't', desc = 'Move focus up' },
+        ['<c-l>'] = { '<c-l>', function() require('config.nav').navigate('l') end, mode = 't', desc = 'Move focus right' },
       },
     },
   },

@@ -1,4 +1,15 @@
-require('sidekick').setup {}
+require('sidekick').setup {
+  cli = {
+    win = {
+      keys = {
+        nav_left  = false,
+        nav_down  = false,
+        nav_up    = false,
+        nav_right = false,
+      },
+    },
+  },
+}
 vim.keymap.set('n', '<tab>', function()
   if not require('sidekick').nes_jump_or_apply() then
     return '<Tab>'
