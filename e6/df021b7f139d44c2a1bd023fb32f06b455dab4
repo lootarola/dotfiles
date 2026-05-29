@@ -1,0 +1,27 @@
+tmux/.config/tmux/tmux.conf
+  s_cfee6b37e4462c::t_3ed193a5055aa4 46-50
+nvim/.config/nvim/lua/config/keymaps.lua
+  s_cfee6b37e4462c::t_89b6cb79841c7d 22-31
+nvim/.config/nvim/lua/plugins/snacks.lua
+  s_cfee6b37e4462c::t_9bfab57bd24ffb 50-53
+nvim/.config/nvim/lua/config/nav.lua
+  s_cfee6b37e4462c::t_7205f62bc5348a 1-12
+nvim/.config/nvim/lua/plugins/sidekick.lua
+  s_cfee6b37e4462c::t_90bcd78d651e79 1-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "e6df021b7f139d44c2a1bd023fb32f06b455dab4",
+  "prompts": {},
+  "sessions": {
+    "s_cfee6b37e4462c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4340ae81-21cb-4d38-accb-c506606967b6",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "lootarola <lucas.otarola@gmail.com>"
+    }
+  }
+}
