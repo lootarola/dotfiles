@@ -7,7 +7,7 @@ PACKAGES  := aerospace claude ghostty nvim zsh tmux
 BREW_DEPS := stow tmux
 
 BREW_DEPS_nvim := tree-sitter-cli ripgrep
-BREW_DEPS_zsh  := eza
+BREW_DEPS_zsh  := eza zoxide fzf ripgrep bat
 
 TARGETS_aerospace := $(HOME)/.config/aerospace/aerospace.toml
 TARGETS_claude    := $(HOME)/.claude/CLAUDE.md \
